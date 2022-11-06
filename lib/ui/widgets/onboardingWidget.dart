@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:museum/shareds/theme.dart';
 import 'package:museum/shareds/value.dart';
@@ -40,8 +41,13 @@ class OnboardingWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   title,
-                  style: const TextStyle(
-                      fontSize: 32, fontWeight: FontWeight.w700, color: black),
+                  style: GoogleFonts.plusJakartaSans(
+                    textStyle: const TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xff0B0B23),
+                    ),
+                  ),
                   textAlign: TextAlign.start,
                 ),
               ),
@@ -52,12 +58,14 @@ class OnboardingWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   subTitle,
-                  style: const TextStyle(
-                    height: 1.5,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                    letterSpacing: 0.7,
-                    color: black,
+                  style: GoogleFonts.plusJakartaSans(
+                    textStyle: const TextStyle(
+                      height: 1.5,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      letterSpacing: 0.7,
+                      color: Color(0xff8B95A5),
+                    ),
                   ),
                   // textAlign: TextAlign.center,
                 ),

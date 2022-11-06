@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HelpExpandedWidget extends StatefulWidget {
   final bool? active;
@@ -50,7 +51,7 @@ class _HelpExpandedWidgetState extends State<HelpExpandedWidget> {
                   BoxShadow(
                     blurRadius: 5,
                     spreadRadius: 1,
-                    offset: Offset(0, 2),
+                    offset: const Offset(0, 2),
                     color: Colors.grey.withOpacity(0.1),
                   ),
                 ],
@@ -61,27 +62,29 @@ class _HelpExpandedWidgetState extends State<HelpExpandedWidget> {
                 children: [
                   Text(
                     widget.title,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
+                    style: GoogleFonts.inter(
+                      textStyle: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                   active == true
                       ? HeroIcon(
                           HeroIcons.chevronUp,
-                          size: 18,
+                          size: 24,
                           color: Colors.black,
                         )
                       : HeroIcon(
                           HeroIcons.chevronDown,
-                          size: 18,
+                          size: 24,
                           color: Colors.black,
                         ),
                 ],
               ),
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Visibility(
             visible: active,
             child: widget.body,

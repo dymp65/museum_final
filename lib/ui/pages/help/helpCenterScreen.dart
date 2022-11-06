@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:museum/ui/pages/help/helpExpandedWidget.dart';
 import 'package:museum/ui/pages/help_center/controllers/help_center_controller.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../help_center/models/help_center_model.dart';
 
@@ -30,12 +31,14 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
         toolbarHeight: 100,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: const Text(
+        title: Text(
           'Help Center',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+          style: GoogleFonts.inter(
+            textStyle: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff232933),
+            ),
           ),
         ),
         elevation: 1.0,
@@ -90,7 +93,15 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
       ),
       child: Wrap(
         children: [
-          Text(description),
+          Text(
+            description,
+            style: GoogleFonts.poppins(
+              textStyle: const TextStyle(
+                fontSize: 10,
+                color: Color(0xff3E3E3E),
+              ),
+            ),
+          ),
         ],
       ),
     );

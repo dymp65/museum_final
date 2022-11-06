@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:museum/shareds/theme.dart';
 import 'package:museum/shareds/value.dart';
@@ -48,6 +49,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffF5F6F8),
       body: Stack(
         children: <Widget>[
           PageView.builder(
@@ -68,11 +70,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   builder: (context) => WelcomeScreen(),
                 ),
               ),
-              child: const Text(
+              child: Text(
                 'Lewati',
-                style: TextStyle(
-                  color: Color(0xff409BEF),
-                  fontWeight: FontWeight.w600,
+                style: GoogleFonts.plusJakartaSans(
+                  textStyle: const TextStyle(
+                    color: Color(0xff409BEF),
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ),
@@ -98,7 +102,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 horizontal: 5, vertical: 30),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: (index == currentPage) ? blue : grey));
+                                color: (index == currentPage)
+                                    ? Color(0xff409BEF)
+                                    : Color(0xffD8D8D8)));
                       }),
                     ),
                   ),
@@ -132,17 +138,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: 50,
                           decoration: BoxDecoration(
-                            color: Color(
+                            color: const Color(
                               0xff409BEF,
                             ),
-                            borderRadius: BorderRadius.circular(35),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           child: Center(
                             child: Text(
                               'Selanjutnya',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
+                              style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
                           ),

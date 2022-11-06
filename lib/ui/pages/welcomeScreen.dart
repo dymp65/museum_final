@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:museum/blocs/blocs.dart';
 import 'package:museum/shareds/value.dart';
 import 'package:museum/ui/components/buttonComponent.dart';
@@ -74,6 +75,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   Widget _welcomeBuilder() {
     return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -88,12 +90,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          const Center(
+          Center(
             child: Text(
               Values.welcomeText,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+              style: GoogleFonts.plusJakartaSans(
+                textStyle: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff0B0B23),
+                ),
               ),
             ),
           ),
@@ -130,8 +135,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             _wifiActive
                 ? 'assets/images/wifi_new.png'
                 : 'assets/images/wifi_new_off.png',
-            'Sambungkan Wi-Fi',
-            'Sambungan ke SSID “museum” untuk menikmati Fitur Augmented Reality',
+            'Cek Koneksi Internet',
+            'Silakan sambungkan dengan Wi-Fi  "museum" untuk koneksi yang lebih stabil',
             false,
           ),
           const SizedBox(height: 10),
@@ -142,7 +147,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           const SizedBox(height: 10),
           _configHeadset(
             'Gunakan Headset / Headphone',
-            'Untuk menkmati audio lebih yang maximal gunakan Headset / Headphone',
+            'Silakan menggunakan headset/ earphone untuk menikmati audio  yang jernih',
             'assets/images/headphone.png',
           ),
           const SizedBox(height: 68),
@@ -164,16 +169,27 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       );
                     }
                   },
-                  child: CustomButton(
-                    padding: 16,
-                    text: 'Mulai Jelajahi Museum',
+                  child: CircleButton(
                     color: _wifiActive && state == BluetoothState.on
                         ? Color(0xff409BEF)
                         : Color(0xffDADADA),
+                    active: _wifiActive && state == BluetoothState.on
+                        ? true
+                        : false,
                   ),
+                  // CustomButton(
+                  //   padding: 16,
+                  //   text: 'Mulai Jelajahi Museum',
+                  //   color: _wifiActive && state == BluetoothState.on
+                  //       ? Color(0xff409BEF)
+                  //       : Color(0xffDADADA),
+                  // ),
                 ),
               );
             },
+          ),
+          const SizedBox(
+            width: 32,
           ),
         ],
       ),
@@ -212,43 +228,57 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                    style: GoogleFonts.plusJakartaSans(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: Color(0xff232933),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Text(
-                    desc,
-                    style: TextStyle(
-                      fontSize: 14,
+                  Container(
+                    padding: const EdgeInsets.only(right: 32),
+                    child: Text(
+                      desc,
+                      style: GoogleFonts.plusJakartaSans(
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          color: Color(0xff626B79),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 8),
                   _appLoading
-                      ? SizedBox(
+                      ? const SizedBox(
                           height: 30,
                           width: 30,
                           child: CircularProgressIndicator())
                       : config
-                          ? const Text(
+                          ? Text(
                               'Akses berhasil!',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Color(
-                                  0xFF3FA796,
-                                ),
+                              style: GoogleFonts.plusJakartaSans(
+                                textStyle: const TextStyle(
+                                    fontSize: 14,
+                                    color: Color(
+                                      0xFF3FA796,
+                                    ),
+                                    decoration: TextDecoration.underline),
                               ),
                             )
                           : InkWell(
                               onTap: () async {
                                 AppSettings.openBluetoothSettings();
                               },
-                              child: const Text(
+                              child: Text(
                                 'Buka pengaturan Bluetooth',
-                                style: TextStyle(
-                                  color: Color(0xFF409BEF),
-                                  decoration: TextDecoration.underline,
+                                style: GoogleFonts.plusJakartaSans(
+                                  textStyle: const TextStyle(
+                                    color: Color(0xFF409BEF),
+                                    fontSize: 14,
+                                    decoration: TextDecoration.underline,
+                                  ),
                                 ),
                               ),
                             ),
@@ -292,16 +322,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                    style: GoogleFonts.plusJakartaSans(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: Color(0xff232933),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Text(
-                    desc,
-                    style: TextStyle(
-                      fontSize: 14,
+                  Container(
+                    padding: const EdgeInsets.only(right: 32),
+                    child: Text(
+                      desc,
+                      style: GoogleFonts.plusJakartaSans(
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          color: Color(0xff626B79),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -353,18 +392,27 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                    style: GoogleFonts.plusJakartaSans(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff232933),
+                        fontSize: 14,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Text(
-                    desc,
-                    style: TextStyle(
-                      fontSize: 14,
+                  Container(
+                    padding: const EdgeInsets.only(right: 32),
+                    child: Text(
+                      desc,
+                      style: GoogleFonts.plusJakartaSans(
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          color: Color(0xff626B79),
+                        ),
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -375,13 +423,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   _textWifiConnect() {
-    return const Text(
+    return Text(
       'Akses berhasil!',
-      style: TextStyle(
-        fontSize: 14,
-        color: Color(
-          0xFF3FA796,
-        ),
+      style: GoogleFonts.plusJakartaSans(
+        textStyle: const TextStyle(
+            fontSize: 14,
+            color: Color(
+              0xFF3FA796,
+            ),
+            decoration: TextDecoration.underline),
       ),
     );
   }
@@ -391,11 +441,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       onTap: () async {
         _onConnectPressed();
       },
-      child: const Text(
+      child: Text(
         'Connect dengan Wi-Fi Museum',
-        style: TextStyle(
-          color: Color(0xFF409BEF),
-          decoration: TextDecoration.underline,
+        style: GoogleFonts.plusJakartaSans(
+          textStyle: const TextStyle(
+            color: Color(0xFF409BEF),
+            fontSize: 14,
+            decoration: TextDecoration.underline,
+          ),
         ),
       ),
     );
